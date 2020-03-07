@@ -1,0 +1,121 @@
+\documentclass[12pt,a4paper,twoside,sumario=abnt-6027-2012,chapter=TITLE]{abntex2}
+\input{__pacotes.tex}
+
+\instituicao{UNIVERSIDADE FEDERAL DOS VALES DO JEQUITINHONHA E MUCURI}
+\titulo{Título}
+\autor{Aluno}
+\local{Diamantina}
+\data{2020}
+
+\curso{Sistemas de Informação}
+\preambulo{Trabalho de Conclusão de Curso apresentado
+ao Curso de Sistemas de Informação, como
+parte dos requisitos exigidos para a conclusão
+do curso.}
+%lalala
+
+
+
+%\curso{Programa de Pós-Graduação em Educação}
+%\preambulo{Dissertação de Mestrado apresentada ao Programa de Pós-Graduação em Educação, como parte dos requisitos exigidos para a obtenção do título de Mestre em Educação.}
+
+%% Dados do orientador
+\TitulacaoOrientador{Prof. Dr.}
+\orientador{Orientador} 
+\DepartamentoOrientador{Departamento de Computação -- UFVJM}
+
+%% Dados do coorientador
+%% Se não possuir orientador comente as linhas abaixo
+\TitulacaoCoorientador{Prof. Me.}
+\coorientador{Coorientador}
+\DepartamentoCoorientador{Diretoria de Comunicação Social -- UFVJM}
+
+%% Dados dos membros da banca
+\TitulacaoMembroA{Prof. Dr.}
+\membroA{Primeiro Membro}
+\DepartamentoMembroA{Departamento de Computação -- UFVJM}
+
+\TitulacaoMembroB{Prof. Me.}
+\membroB{Segundo Membro}
+\DepartamentoMembroB{Diretoria de Comunicação Social -- UFVJM}
+
+\TitulacaoMembroC{Prof. Dr.}
+\membroC{Terceiro Membro}
+\DepartamentoMembroC{Departamento de Computação -- UFVJM}
+
+% \TitulacaoMembroD{Prof. Dr.}
+% \membroD{Beltrano}
+% \DepartamentoMembroD{Instituto de Ciência e Tecnologia -- UFVJM}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Início do documento
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\imprimircapa                 %% Capa
+\imprimirfolhaderosto         %% Folha de rosto
+
+%==============================================
+%% Folha de aprovação 
+%% Escolha a opção adequada.
+%==============================================
+\input{pre-textual/_folha_aprovacao.tex}
+%\includepdf{FolhaAprovacao.pdf}
+%\includepdf{FolhaAprovacaoSemAssinaturas.pdf}
+%==============================================
+
+\cleardoublepage %insere página em branco depois da folha de aprovação para a impressão frente e verso
+
+\input{pre-textual/_dedicatoria.tex}      %% Dedicatória       - opcional 
+\input{pre-textual/_agradecimentos.tex}   %% Agradecimentos    - opcional 
+\input{pre-textual/_epigrafe.tex}         %% Epígrafe          - opcional
+
+\input{pre-textual/cap_Resumo.tex}        %% Resumo
+\input{pre-textual/cap_Abstract.tex}      %% Abstract
+
+\input{pre-textual/_lista_figuras.tex}    %% Lista de figuras  - opcional 
+\input{pre-textual/_lista_tabelas.tex}    %% Lista de tabelas  - opcional 
+
+\input{pre-textual/_lista_quadros.tex}
+
+\newpage
+%\input{_lista_siglas.tex}     %% Lista de siglas   - opcional
+%\input{_lista_simbolos.tex}   %% Lista de símbolos - opcional
+
+\tableofcontents*             %% Sumário
+
+\newpage
+\textual
+
+\pagestyle{simple} %%%% Esse comando tira o cabeçalho do modelo abntex2 original.
+
+% \input{capitulos/cap_Introducao.tex}
+%\input{capitulos/introducao.tex}
+%\input{capitulos/revisao-de-literatura}
+% \input{capitulos/metodologia.tex}
+% \input{capitulos/discussao.tex}
+% \input{capitulos/resultados.tex}
+% \input{capitulos/consideracoes-finais.tex}
+
+
+% Deixar espaço em branco entre o final do trabalho e a bibliografia para evitar problemas de espaçamento entre linhas
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+\bibliography{bibliografia}  %% Gera as referências
+
+\apendices
+%\input{pos-textual/apendice.tex}
+
+\anexos
+%\input{pos-textual/anexo.tex}
+% \input{pos-textual/cap_Anexo2.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fim do documento
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

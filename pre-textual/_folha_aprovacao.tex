@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Gera a folha de Aprovação
+%% Não edite esse arquivo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%==================================================================
+%% INÍCIO FOLHA DE APROVAÇÃO
+%% Define a folha de aprovação
+%%==================================================================
+\makeatletter
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\bfseries \imprimirautor}
+
+    \vspace{1.5cm}
+    \begin{center}
+      \bfseries \imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo\\
+        
+        {\imprimirorientadorRotulo~\imprimirTitulacaoOrientador~\imprimirorientador}\\
+        \abntex@ifnotempty{\imprimircoorientador}{% 
+            {\imprimircoorientadorRotulo~\imprimirTitulacaoCoorientador~\imprimircoorientador}\\% 
+            }%
+        
+        {Data de aprovação \_\_\_\_/\_\_\_\_/\_\_\_\_.}
+    \end{minipage}
+    \vspace*{\fill}
+   \end{center}
+  
+
+    %\assinatura{\imprimirTitulacaoOrientador~\imprimirorientador \\ \imprimirDepartamentoOrientador}
+    %\abntex@ifnotempty{\imprimircoorientador}{%
+    %\assinatura{\imprimirTitulacaoCoorientador~\imprimircoorientador \\ \imprimirDepartamentoCoorientador}
+    %}%
+    \abntex@ifnotempty{\imprimirMembroA}{%
+    \assinatura{\imprimirTitulacaoMembroA~\imprimirMembroA \\ \imprimirDepartamentoMembroA}
+    }%
+    \abntex@ifnotempty{\imprimirMembroB}{%
+    \assinatura{\imprimirTitulacaoMembroB~\imprimirMembroB \\ \imprimirDepartamentoMembroB}
+    }%
+    \abntex@ifnotempty{\imprimirMembroC}{%
+    \assinatura{\imprimirTitulacaoMembroC~\imprimirMembroC \\ \imprimirDepartamentoMembroC}
+    }%
+    \abntex@ifnotempty{\imprimirMembroD}{%
+    \assinatura{\imprimirTitulacaoMembroD~\imprimirMembroD \\ \imprimirDepartamentoMembroD}
+    }%
+
+   \begin{center}
+    \vspace*{0.5cm}
+    {\textbf{\imprimirlocal}}
+    %\par
+    %{\imprimirdata}
+    %\vspace*{1cm}
+  \end{center}
+
+\end{folhadeaprovacao}
+\makeatother
+%%==================================================================
+%% FIM FOLHA DE APROVAÇÃO
+%% Define a folha de aprovação
+%%==================================================================
+

@@ -1,0 +1,421 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Esse arquivo inclui os pacotes e configurações utilizados
+%% para adequar o modelo.
+%%
+%%  **** Não é necessário modificar esse arquivo ****
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{scrextend} % para usar o ambiente labeling
+\usepackage{array}
+\usepackage{scalefnt} %escala de tabelas
+\usepackage[brazil]{babel}
+\usepackage{mathptmx} %Times new roman para texto e matemática
+%\usepackage{times}   %Times new roman para texto
+\usepackage{lastpage}
+\usepackage{minitoc} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}	
+\usepackage[]{pdfpages} %permite colocar pdf no texto
+
+\sloppy
+
+%%==================================================================
+%% INÍCIO
+%% Permite colocar código (Algoritmos) 
+%% https://pt.overleaf.com/learn/latex/Code_listing
+%%==================================================================
+\usepackage{listings} 
+\usepackage{xcolor}
+
+%% As linhas abaixo permitem várias personalizações
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+%%==================================================================
+%% FIM
+%% Permite colocar código (Algoritmos) 
+%%==================================================================
+
+
+%%==================================================================
+%% INÍCIO
+%% Configurações de espaçamento entre títulos dos capítulos e seções
+%%==================================================================
+% Coloca o espaçamento 1,5 entre títulos de capítulos e o texto. 
+% Coloca tanto antes quanto depois. Norma abnt e manual da UFVJM
+\setlength\afterchapskip{\lineskip} 
+\setlength\beforechapskip{\lineskip}
+%coloca o espaçamento 1,5 entre títulos de seções e o texto. 
+%Coloca tanto antes quanto depois. Norma abnt e manual da UFVJM
+\setlength\aftersecskip{\lineskip}
+\setlength\beforesecskip{\lineskip}
+%Coloca o espaçamento 1,5 entre títulos de subseções e o texto. 
+%Coloca tanto antes quanto depois. Norma abnt e manual da UFVJM
+\setlength\aftersubsecskip{\lineskip}
+\setlength\beforesubsecskip{\lineskip}
+% Coloca o espaçamento 1,5 entre títulos de subsubseções e o texto. 
+% Coloca tanto antes quanto depois. Norma abnt e manual da UFVJM
+\setlength\aftersubsubsecskip{\lineskip}
+\setlength\beforesubsubsecskip{\lineskip}
+%%==================================================================
+%% FIM 
+%% Configurações de espaçamento entre títulos dos capítulos e seções
+%%==================================================================
+
+%%==================================================================
+%% INÍCIO
+%% Euler - pacotes para múltiplas linhas e colunas de tabelas
+%%==================================================================
+\usepackage{multirow}
+\usepackage{multicol}
+%%==================================================================
+%% FIM 
+%% Euler - pacotes para múltiplas linhas e colunas de tabelas
+%%==================================================================
+
+
+
+%%%marcelo - Caption do tipo do elemento gráfico em negrito.
+
+%\usepackage[labelfont=bf]{caption}
+
+%%% Ex: Figura 1 - Título da figura.
+%%% Apenas Figura 1 estará em negrito
+
+%%%marcelo - Todo caption em negrido
+
+\usepackage{caption}
+% marcelo - colocar a fonte alinhada a esquerda
+%https://tex.stackexchange.com/questions/131532/position-caption-of-centered--left-adjusted-to-figure
+%\captionsetup{font={bf,small}, position=below, justification=raggedright, singlelinecheck=false} % negrito e menor
+\captionsetup{font={bf,small}, position=below,labelsep=endash} % negrito e menor
+%%% tamanhos disponíveis -> scriptsize, footnotesize, small, normalsize, large, Large
+
+%%% Ex: Figura 1 - Título da figura
+%%% Figura 1 - Título da figura estará em negrito.
+%% Euler: para colocar o travessão: labelsep=endash
+% marcelo - Deixa a fonte da figura, quadro, etc, sem negrito quando se utiliza a solução acima.
+%\newcommand{\fonteUFVJM}[1]{\legend{\textnormal{Fonte -- #1}}}
+\renewcommand{\fonte}[1]{\captionsetup{justification=raggedright, singlelinecheck=false}\legend{\textnormal{Fonte: #1}}}
+
+%\renewcommand{\fonte}[1]{\legend{\textnormal{Fonte: #1}}}
+
+
+% marcelo - simula aspas duplas no estilo usado pelo JSON (''a'')
+\newcommand{\q}[1]{{\textquotesingle\textquotesingle}#1{\textquotesingle\textquotesingle}}
+%marcelo - nome menor para backslash
+\newcommand{\bks}{\textbackslash}
+
+\usepackage{tabularx} % marcelo - tabelas justificadas
+\usepackage{booktabs} % marcelo - grossura da linha em tabelas
+
+%%% marcelo - retira espaços extras entre os elementos de uma lista (itemize e enumarate)
+\usepackage{enumitem}
+\usepackage{setspace}
+\setlist[itemize,enumerate]{nosep} % Caso queira deixar espaçamento duplo entre o parágravo anterior e posterior, mas não entre itens da lista, utilizar noitemsep no lugar de nosep
+%%% até aqui
+
+\raggedbottom % marcelo - Resolve o problema do espaçamento entre parágrafos aleatório
+
+\usepackage{subfig} %marcelo - Suporte a subfiguras	
+
+%\usepackage[none]{hyphenat} %marcelo - não permite hifenização
+
+
+\usepackage{indentfirst}		
+\usepackage{color}				
+\usepackage{microtype}
+%\usepackage[alf,abnt-emphasize=bf]{abntex2cite}
+
+%resolve problemas com as referências
+%% Versão justificada das referências
+%\usepackage[alf,abnt-etal-cite=3,abnt-etal-list=0,abnt-etal-text=emph,abnt-emphasize=bf]{abntex2cite}
+
+%% Versão alinhada à esquerda das referências
+\usepackage[alf,abnt-etal-cite=3,abnt-etal-list=0,abnt-etal-text=emph,abnt-emphasize=bf]{abntex2cite}
+
+\usepackage{ragged2e} %para usar o comando \justify
+\usepackage{enumitem} %para mudar as alíneas
+\usepackage{textcomp} %fornece caracteres especiais
+\setlength{\parindent}{2cm} %Tamanho do parágrafo
+%\setlength{\parskip}{1.5cm} 
+%\setlrmarginsandblock{3cm}{2cm}
+
+
+%Para definir o tamanho das fontes das seções, subseções, etc (+++ seria o item (subsection, section, chapter, etc):
+
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize} 
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize} 
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize} 
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+
+%Para deixar as fontes das seções, subseções, etc, em negrito (+++ seria o item (subsection, section, chapter, etc):
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\normalfont\bfseries}
+\renewcommand{\ABNTEXsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\itshape\bfseries}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont\itshape}
+
+
+%Alterar o tipo da fonte no sumário - MARCELO
+
+% Secao secundaria (Section) Caixa baixa, Negrito, tamanho 12
+%\renewcommand{\cftsectionfont}{\bfseries} %ponha \rmfamily se quiser serifadas...
+
+% Secao terciaria (Subsection) Caixa baixa e italico no sumário
+\renewcommand{\cftsubsectionfont}{\normalfont\itshape\bfseries}
+
+% Secao quaternaria (Subsubsection) Caixa baixa, Negrito, sublinhado, tamanho 12
+\renewcommand{\cftsubsubsectionfont}{\normalfont\itshape}
+
+% Seção quinaria (subsubsubsection) Caixa baixa, sem negrito, tamanho 12
+%\renewcommand{\cftparagraphfont}{\normalfont}
+
+% MARCELO - Evitar linhas órfãs e viúvas
+\widowpenalty=10000
+\clubpenalty=10000
+
+
+
+%%%%% Euler - Cria comando para citar fontes de figuras e tabelas.
+
+\newcommand{\citefonte}[1]
+{\citeauthor{#1}, \citeyear{#1}}
+
+
+\hypersetup{
+     	pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Nome do Aluno},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		
+    	linkcolor=black,          	
+    	citecolor=black,        	
+    	filecolor=magenta,      		
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+
+%%==================================================================
+%% INÍCIO 
+%% João Paulo / Felipe Túlio (PPGEd)
+%% Mapas Gráficos ...
+%%==================================================================
+
+%% QUADROS
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+% Configuração de posicionamento padrão:
+\setfloatlocations{quadro}{hbtp}
+
+%% Mapas
+\newcommand{\mapaname}{Mapa}
+\newcommand{\listofmapasname}{}
+\newfloat[chapter]{mapa}{lom}{\mapaname}
+\newlistof{listofmapas}{lom}{\listofmapasname}
+\newlistentry{mapa}{lom}{0}
+\setfloatadjustment{mapa}{\centering}
+\counterwithout{mapa}{chapter}
+\renewcommand{\cftmapaname}{\mapaname\space} 
+\renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
+\setfloatlocations{mapa}{hbtp}
+
+%% Graficos
+\newcommand{\graficoname}{Gráfico}
+\newcommand{\listofgraficosname}{}
+\newfloat[chapter]{grafico}{logrf}{\graficoname}
+\newlistof{listofgraficos}{logrf}{\listofgraficosname}
+\newlistentry{grafico}{logrf}{0}
+\setfloatadjustment{grafico}{\centering}
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space} 
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+\setfloatlocations{grafico}{hbtp}
+
+%% Algoritmo
+\newcommand{\algoritmoname}{Algoritmo}
+\newcommand{\listofalgoritmosname}{Lista de Ilustrações} % Gambiarra 
+\newfloat[chapter]{algoritmo}{loalg}{\algoritmoname}
+\newlistof{listofalgoritmos}{loalg}{\listofalgoritmosname}
+\newlistentry{algoritmo}{loalg}{0}
+\setfloatadjustment{algoritmo}{\centering}
+\counterwithout{algoritmo}{chapter}
+\renewcommand{\cftalgoritmoname}{\algoritmoname\space} 
+\renewcommand*{\cftalgoritmoaftersnum}{\hfill--\hfill}
+\setfloatlocations{algoritmo}{hbtp}
+
+% Gambiarra 
+\addto\captionsbrazil{%
+  \renewcommand{\listfigurename}%
+    {}%
+}
+
+%%==================================================================
+%% FIM 
+%% João Paulo / Felipe (PPGEd)
+%% Mapas Gráficos ...
+%%==================================================================
+
+
+
+
+%%==================================================================
+%% INÍCIO 
+%% Alexandre - Comandos adicionais 
+%%==================================================================
+
+% Comando para definir curso/programa
+\providecommand{\imprimircurso}{}
+\newcommand{\curso}[1]{\renewcommand{\imprimircurso}{#1}}
+
+% Comando para Titulação do Orientador
+\providecommand{\imprimirTitulacaoOrientador}{}
+\newcommand{\TitulacaoOrientador}[1]{\renewcommand{\imprimirTitulacaoOrientador}{#1}}
+
+% Comando para Titulação do Orientador
+\providecommand{\imprimirDepartamentoOrientador}{}
+\newcommand{\DepartamentoOrientador}[1]{\renewcommand{\imprimirDepartamentoOrientador}{#1}}
+
+% Comando para Titulação do Coorientador
+\providecommand{\imprimirTitulacaoCoorientador}{}
+\newcommand{\TitulacaoCoorientador}[1]{\renewcommand{\imprimirTitulacaoCoorientador}{#1}}
+
+% Comando para Titulação do Orientador
+\providecommand{\imprimirDepartamentoCoorientador}{}
+\newcommand{\DepartamentoCoorientador}[1]{\renewcommand{\imprimirDepartamentoCoorientador}{#1}}
+
+%Membos da banca 
+\providecommand{\imprimirMembroA}{}
+\newcommand{\membroA}[1]{\renewcommand{\imprimirMembroA}{#1}}
+\providecommand{\imprimirMembroB}{}
+\newcommand{\membroB}[1]{\renewcommand{\imprimirMembroB}{#1}}
+\providecommand{\imprimirMembroC}{}
+\newcommand{\membroC}[1]{\renewcommand{\imprimirMembroC}{#1}}
+\providecommand{\imprimirMembroD}{}
+\newcommand{\membroD}[1]{\renewcommand{\imprimirMembroD}{#1}}
+\providecommand{\imprimirTitulacaoMembroA}{}
+\newcommand{\TitulacaoMembroA}[1]{\renewcommand{\imprimirTitulacaoMembroA}{#1}}
+\providecommand{\imprimirTitulacaoMembroB}{}
+\newcommand{\TitulacaoMembroB}[1]{\renewcommand{\imprimirTitulacaoMembroB}{#1}}
+\providecommand{\imprimirTitulacaoMembroC}{}
+\newcommand{\TitulacaoMembroC}[1]{\renewcommand{\imprimirTitulacaoMembroC}{#1}}
+\providecommand{\imprimirTitulacaoMembroD}{}
+\newcommand{\TitulacaoMembroD}[1]{\renewcommand{\imprimirTitulacaoMembroD}{#1}}
+\providecommand{\imprimirDepartamentoMembroA}{}
+\newcommand{\DepartamentoMembroA}[1]{\renewcommand{\imprimirDepartamentoMembroA}{#1}}
+\providecommand{\imprimirDepartamentoMembroB}{}
+\newcommand{\DepartamentoMembroB}[1]{\renewcommand{\imprimirDepartamentoMembroB}{#1}}
+\providecommand{\imprimirDepartamentoMembroC}{}
+\newcommand{\DepartamentoMembroC}[1]{\renewcommand{\imprimirDepartamentoMembroC}{#1}}
+\providecommand{\imprimirDepartamentoMembroD}{}
+\newcommand{\DepartamentoMembroD}[1]{\renewcommand{\imprimirDepartamentoMembroD}{#1}}
+%%==================================================================
+%% FIM
+%% Alexandre - Comandos adicionais
+%%==================================================================
+
+%%==================================================================
+%% INÍCIO CAPA
+%% Define a capa do trabalho
+%%==================================================================
+\renewcommand{\imprimircapa}{% 
+\begin{capa}% 
+    \center 
+    {\bfseries \imprimirinstituicao}\\
+    {\bfseries \imprimircurso}\\
+    {\bfseries \imprimirautor} 
+    %\vspace*{1cm} 
+    \vfill 
+    \begin{center} 
+    \bfseries \imprimirtitulo 
+    \end{center} 
+    \vfill 
+    \bfseries \imprimirlocal \\
+    \bfseries \imprimirdata 
+    \vspace*{1cm} 
+\end{capa} 
+}%
+%%==================================================================
+%% FIM CAPA
+%% Define a capa do trabalho
+%%==================================================================
+
+%%==================================================================
+%% INÍCIO FOLHA DE ROSTO
+%% Define a folha de rosto
+%%==================================================================
+\makeatletter
+\renewcommand{\folhaderostocontent}{ 
+\begin{center} 
+    {\bfseries\imprimirautor} 
+    \vspace*{\fill}
+    \vspace*{\fill} 
+    \begin{center} \bfseries\imprimirtitulo \end{center} 
+    \vspace*{\fill} 
+    \abntex@ifnotempty{\imprimirpreambulo}{% 
+    \hspace{.45\textwidth} 
+    \begin{minipage}{.5\textwidth} 
+        \begin{SingleSpacing}
+        \imprimirpreambulo
+        \end{SingleSpacing}
+        \begin{SingleSpacing}
+            {\imprimirorientadorRotulo~\imprimirorientador}\\ 
+            \abntex@ifnotempty{\imprimircoorientador}{% 
+            {\imprimircoorientadorRotulo~\imprimircoorientador}% 
+            }% 
+        \end{SingleSpacing}
+    \end{minipage}%
+    \vspace*{\fill} }% 
+    %{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao \vspace*{\fill}}} \\
+    \vspace*{\fill} \\
+    {\bfseries\imprimirlocal} 
+    \par 
+    {\bfseries\imprimirdata} 
+    \vspace*{1cm} 
+\end{center} 
+} 
+\makeatother 
+%%==================================================================
+%% FIM FOLHA DE ROSTO
+%% Define a folha de rosto
+%%==================================================================
+
+
+\makeindex
+
