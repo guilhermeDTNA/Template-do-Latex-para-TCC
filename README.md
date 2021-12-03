@@ -6,6 +6,7 @@ Template do Latex para Trabalho de Conclusão de Curso na UFVJM, respeitando as 
 
 # Adicionando figura:
 
+```tex
 \begin{figure}[htb]
  \centering
  \caption{Título}
@@ -13,9 +14,11 @@ Template do Latex para Trabalho de Conclusão de Curso na UFVJM, respeitando as 
  \label{apelido}
  \fonte{\apud{citação-indireta}{citação-direta}.}
 \end{figure}
+```
 
 # Adicionando tabela:
 
+```tex
 \begin{table}[h]
 \centering
 \scalefont{1.1}
@@ -44,15 +47,19 @@ Apoio e força da comunidade & 3 & 3 & 3 \\
 \fonte{\citeonline{citação-indireta}. Adaptado.}
 \label{apelido}
 \end{table}
+```
 
 # Citação superior a 3 linhas:
 
+```tex
 \begin{citacao}
 Indústrias como fabricação, viagens e hospitalidade, bancos, educação e governo estão habilitados na web para melhorar e aprimorar suas operações. O comércio eletrônico expandiu-se rapidamente, atravessando fronteiras nacionais. Até os sistemas tradicionais de informações e bancos de dados herdados migraram para a Web. \cite[p. 1]{citação}.
 \end{citacao}
+```
 
 # Adicionando quadro:
 
+```tex
 \begin{quadro}[h]
 \centering
 \scalefont{0.8}
@@ -70,3 +77,4 @@ linha 3 \\
 \fonte{\citeonline{citação}. Adaptado.}
 \label{apelido}
 \end{quadro}
+```
