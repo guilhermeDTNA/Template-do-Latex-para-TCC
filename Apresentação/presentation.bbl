@@ -1,0 +1,68 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.45.2.1 }
+
+\bibitem[Alves 2017]{elias}
+\abntrefinfo{Alves}{ALVES}{2017}
+{ALVES, E. d.~C.
+
+\emph{Reconstru\c c\~ao do portal institucional da UFVJM: ado\c c\~ao da
+  Identidade Digital do Governo Federal e implementa\c c\~ao do PloneGov-BR
+  como novo Sistema de Gerenciamento de Conte\'udo} --- Universidade dos Vales
+  do Jequitinhonha e Mucuri, Diamantina, MG, Brasil, 2017.}
+
+
+\bibitem[Anwer et al. 2017]{anwer2017comparative}
+\abntrefinfo{Anwer et al.}{ANWER et al.}{2017}
+{ANWER, F. et al. Comparative analysis of two popular agile process models:
+  Extreme programming and scrum.
+\emph{International Journal of Computer Science and Telecommunications}, v.~8,
+  n.~2, p.~1--7, 2017.}
+
+
+\bibitem[Begel e Nagappan 2007]{begel2007usage}
+\abntrefinfo{Begel e Nagappan}{BEGEL; NAGAPPAN}{2007}
+{BEGEL, A.; NAGAPPAN, N. Usage and perceptions of agile software development in
+  an industrial context: An exploratory study. In:  IEEE. \emph{First
+  International Symposium on Empirical Software Engineering and Measurement
+  (ESEM 2007)}. [S.l.], 2007. p. 255--264.}
+
+
+\bibitem[Centeno 2017]{centeno2017pampatur}
+\abntrefinfo{Centeno}{CENTENO}{2017}
+{CENTENO, D.~B. Pampatur blog.
+Universidade Federal do Pampa, 2017.}
+
+
+\bibitem[Chagas, Carvalho e Silva 2018]{chagas2018estudo}
+\abntrefinfo{Chagas, Carvalho e Silva}{CHAGAS; CARVALHO; SILVA}{2018}
+{CHAGAS, F.; CARVALHO, C.~L. de; SILVA, J.~C. da. Um estudo sobre os sistemas
+  de gerenciamento de conte{\'u}do de c{\'o}digo aberto.
+\emph{Revista Telfract}, v.~1, n.~1, 2018.}
+
+
+\bibitem[Meike, Sametinger e Wiesauer 2009]{meike2009security}
+\abntrefinfo{Meike, Sametinger e Wiesauer}{MEIKE; SAMETINGER; WIESAUER}{2009}
+{MEIKE, M.; SAMETINGER, J.; WIESAUER, A. Security in open source web content
+  management systems.
+\emph{IEEE Security \& Privacy}, IEEE, v.~7, n.~4, p. 44--51, 2009.}
+
+
+\bibitem[Milani 2007]{milani2007mysql}
+\abntrefinfo{Milani}{MILANI}{2007}
+{MILANI, A. \emph{MySQL-guia do programador}. [S.l.]: Novatec Editora, 2007.}
+
+
+\bibitem[Silva, Souza e Camargo 2013]{dos2013metodologias}
+\abntrefinfo{Silva, Souza e Camargo}{SILVA; SOUZA; CAMARGO}{2013}
+{SILVA, D.~E. dos S.; SOUZA, I.~T. de; CAMARGO, T. Metodologias {\'a}geis para
+  o desenvolvimento de software: Aplica{\c{c}}{\~a}o e o uso da metodologia
+  scrum em contraste ao modelo tradicional de gerenciamento de projetos.
+\emph{Revista Computa{\c{c}}{\~a}o Aplicada-UNG-Ser}, v.~2, n.~1, p. 39--46,
+  2013.}
+
+
+\end{thebibliography}

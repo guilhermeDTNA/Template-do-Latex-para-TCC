@@ -1,0 +1,638 @@
+\documentclass{beamer}
+% \usepackage[utf8]{inputenc}
+\usepackage{default}
+\mode<presentation>{
+\usepackage{beamerthemeshadow}
+%\usepackage{beamerthemeshadow}
+%\usepackage{beamerthemePaloAlto}
+%\usepackage{beamerthemeSzeged}
+%\usepackage{beamerthemeAntibes}
+%\usepackage{beamerthemeBergen}
+%\usepackage{beamerthemeBerkeley}
+%\usepackage{beamerthemeBerlin}
+%\usepackage{beamerthemeBoadilla}  
+%\usepackage{beamerthemeboxes}  
+%\usepackage{beamerthemeCambridgeUS}
+%\usepackage{beamerthemeCopenhagen} 
+%\usepackage{beamerthemeDarmstadt}
+%\usepackage{beamerthemeDresden}
+%\usepackage{beamerthemeFrankfurt}
+%\usepackage{beamerthemeGoettingen}
+%\usepackage{beamerthemeHannover}
+%\usepackage{beamerthemeIlmenau}
+%\usepackage{beamerthemeJuanLesPins} 
+%\usepackage{beamerthemeLuebeck} 
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{clrscode3e}
+\beamertemplatetransparentcovereddynamic
+\beamertemplateballitem
+%\beamertemplatefootpagenumber
+}
+\mode<handout>{
+\usepackage[bar]{beamerthemetree}
+% Colocando um fundo cinza quando for gerar transparências para serem impressas
+% mais de uma transparência por página
+\beamertemplatesolidbackgroundcolor{black!5}
+}
+% \usepackage[ruled,chapter]{algorithm}
+\usepackage{algorithm}	
+\usepackage{algorithmic}
+
+
+\usepackage{amsmath,amssymb}
+\usepackage[brazil]{varioref}
+\usepackage[english,brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+%\usepackage[names]{natbib}
+%\usepackage{minitoc-hyperref}
+%\usepackage{listings}
+%\usepackage{listings}
+%\usepackage{colortbl}
+%\usepackage{pslatex}
+\beamertemplatetransparentcovereddynamic
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+  \oldmacro\hfill%
+  \insertframenumber\,/\,\inserttotalframenumber}
+
+\title[Trabalho de Conclusão de Curso]{Trabalho de Conclusão de Curso}
+\subtitle{Análise da Busca Local Multiobjetivo Baseada em Indicador na resolução do Problema de Roteamento de Veículos com serviços de entrega obrigatória e coleta 
+opcional}
+
+%\titlegraphic{}
+
+\author[Ramon Rocha Leite]{Ramon Rocha Leite}
+  \institute[UFVJM]{Universidade Federal dos Vales do Jequitinhonha e Mucuri \newline
+  Bacharelado em Sistemas de Informação \newline
+%   \inst{Departamento de Computação
+	  
+     Orientadora: Prof.ª Dr.ª Luciana Pereira de Assis\\
+     %Co-orientador: incluir nome do co-orientador\\
+     $~$\\
+%      Disciplina: Nome da Disciplina\\
+}
+\logo{\includegraphics[scale=0.1]{logo-ufvjm.jpg}}
+% Se comentar a linha abaixo, irá aparecer a data quando foi compilada a apresentação
+%\date{\textcolor{red}{III Encontro Mineiro de Equações Diferenciais, 2009}}
+%\pgfdeclareimage[height=0.4cm]{das}{figs/logodas}
+%\pgfdeclareimage[height=1cm]{logo}{logos}
+% pode-se colocar o LOGO assim
+%\logo{\pgfuseimage{logo}}
+% ou...
+%\logo{\vbox{\hbox to 3cm{\hfil\pgfuseimage{logo}}}}
+
+\begin{document}
+\beamerboxesdeclarecolorscheme{formula}{white}{blue!250!averagebackgroundcolor}
+\frame{\titlepage}
+
+%\frame{\titlepage}
+\frame{
+\frametitle{Sumário}
+\tableofcontents
+}
+
+\AtBeginSection[]{
+  \frame<handout:0>{
+    %\frametitle{Sumário}
+    \tableofcontents[current,currentsection]
+  }
+}
+
+%===================================Slide=================================================
+		
+\part{Tutorial}
+\section{Motivação}
+
+\begin{frame}
+  \frametitle{Os custos logísticos nas organizações}
+  \begin{itemize}
+   \item Logística: pode ser definida como o processo de planejamento, implementação e controle dos fluxos de insumos e produtos na cadeia produtiva, de modo 
+   que as mercadorias possam ser transportadas, desde as origens até os destinos, em tempo hábil e em conformidade com as necessidades de quem as demanda (CNT, 2014).
+      
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Os custos logísticos nas organizações}
+  \begin{itemize}
+   \item Os custos logísticos (estoque, transporte e armazenagem) representam grande parcela dos custos totais das empresas.
+   \item Sua maior parte se concentra no transporte, especialmente no Brasil: 59,8\% dos custos logísticos totais (CNT, 2014).
+   \item Fatores agravantes: custos do modal rodoviário, questões de legislação trabalhista e sanitária, bem como reutilização de materiais.
+  \end{itemize}
+   
+% Plano CNT de Transporte e Logística 2014  
+% Brasil: 67% do total de cargas pelo rodoviário. EUA 31%
+% problema grandes proporções em que pequenos percentuais de economia podem representar significativos ganhos, principalmente no Brasil
+% A maior parte desses custos está relacionada ao transporte, especialmente no Brasil 59,8\% (CNT, 2014)
+% Brasil, onde o modal rodoviário é o mais utilizado para transporte de cargas 
+% É o modal mais caro no Brasil depois do aéreo
+ 
+\end{frame}
+
+\section{O Problema de Roteamento de Veículos}
+\begin{frame}
+ \frametitle{O Problema de Roteamento de Veículos}
+ \begin{itemize}
+  \item Deste modo, inúmeros esforços são empregados na tentativa de economizar qualquer precentual de custos de transporte    
+  \item Entre as diversas pesquisas teóricas e práticas nesse campo, há O Problema de Roteamento de Veículos (VRP, do inglês \textit{Vehicle Routing Problem}) 
+  \item O VRP consiste em definir rotas entre um depósito e um conjunto de pontos de entrega que minimize o custo de transporte (Pereira, 2007)
+  \item Cada um destes pontos requer uma quantidade específica de produtos a serem entregues. Cada ponto de entrega é visitado apenas uma vez e por apenas um veículo, 
+  o qual possui capacidade limitada (Caric e Gold, 2008b)
+ \end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{O Problema de Roteamento de Veículos Multiobjetivo com Coleta Opcional - MOVRPOP}
+ \begin{itemize}
+  \item Há inúmeras variações do VRP original, as quais refletem as diversas situações encontradas na realidade.
+  \item A variante aqui abordada é derivada do Problema de Roteamento de Veículos com Coleta e Entrega Simultâneas (VRPSPD) (Parragh et al., 2008).  
+  \item No VRPSPD os consumidores apresentam demandas de \textbf{entrega e também de coleta}. Além disso, ambas as demandas devem ser \textbf{atendidas em uma única visita}. 
+  \item Neste trabalho a obrigatoriedade do VRPSPD de atender as demandas de coleta é relaxada, \textbf{deixando de ser uma restrição e se tornando um objetivo a ser 
+  minimizado}, assim como a distância total percorrida.
+ \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ \begin{itemize}
+ \item $G = (V,A)$ é um grafo completo onde $V = \{v_0, v_1, v_2, \ldots, v_n\}$ é o conjunto de vétices, sendo $v_0$ o depósito e os demais vértices são consumidores;
+ \item $A = \{(v_i,v_j) : i,j \in V ~ e ~ i \neq j\}$ é o conjunto de arestas, onde $(v_i,v_j)$ representa o caminho do vértice $v_i$ ao vértice $v_j$; 
+ \item $c_{ij} \geq 0$ é um valor associado a cada aresta $A(v_i, v_j)$ e representa o custo para se alcançar o vértice $v_j$ a partir do vértice $v_i$;
+ \item cada vértice $v_i$ possui uma demanda não-negativa de entrega ($d_i$) e coleta ($p_i$) associada a ele.
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ \begin{itemize}
+ \item $k_{max}$ é o tamanho da frota de veículos disponíveis com capacidade $Q$;
+ \item $y_{ij}$ é a variável de fluxo que representa o somatório das cargas coletadas entre o depósito e o nó $v_i$ (inclusive), dirigido ao nó $v_j$, 
+ \item $z_{ij}$ é a variável de fluxo que representa o somatório das cargas entregues entre o nó $v_i$ (exclusive) e o depósito, dirigido ao nó $v_j$
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ Variáveis de Decisão do problema:
+ 
+ {\small
+\begin{equation*}
+ x^{k}_{ij} = \begin{cases}
+               1 \qquad \textrm{, se a aresta $(v_i,v_j)$ faz parte da rota trafegada pelo veículo $k$,}\\
+               0 \qquad \textrm{, caso contrário.}
+              \end{cases}
+\end{equation*}
+\begin{equation*}
+ \ell_{j} = \begin{cases}
+           1 \qquad \textrm{, se a demanda de coleta do consumidor $v_j$ é satisfeita,}\\
+           0 \qquad \textrm{, caso contrário.}
+          \end{cases}
+\end{equation*}
+}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ Funções-objetivo: \newline \newline
+ - Minimização do custo
+ \begin{equation}
+\label{eq:modelagem_1}
+Min ~f(\textbf{x}) ~=~ \sum^{k_{max}}_{k=1}\sum^{n}_{i=0}\sum^{n}_{j=0}c_{ij}x^{k}_{ij}
+\end{equation}
+%
+
+ - Minimização das coletas não realizadas
+\begin{equation}
+\label{eq:modelagem_2}
+Min ~f(\boldsymbol{\ell}) ~=~  \sum^{n}_{j=1}p_{j}(1-\ell_{j})
+\end{equation}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ \begin{itemize}
+ \item cada vértice deve ser visitado por um único veículo:
+% cada ponto deve ser visitado por um único veículo
+\begin{equation}
+\label{eq:modelagem_3}
+\sum^{n}_{i=0}\sum^{k_{max}}_{k=1}x^{k}_{ij} = 1, \qquad j = 1,\ldots,n
+\end{equation}
+
+\item a conservação do fluxo deve ser garantida: 
+% conservação de fluxo
+\begin{equation}
+\label{eq:modelagem_4}
+\sum^{n}_{i=0}x^{k}_{ij} - \sum^{n}_{i=0}x^{k}_{ji} = 0, \qquad j = 0,\ldots,n \textrm{ e } k = 0,\ldots,k_{max}
+\end{equation}
+
+\item no máximo $k_{max}$ veículos podems ser utilizados:
+% k veículos, no máximo devem ser utilizados
+\begin{equation}
+\label{eq:modelagem_5}
+\sum^{n}_{j=1}x^{k}_{0j} \leq 1, \qquad k = 1,\ldots,k_{max}
+\end{equation}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ \begin{itemize}
+ \item todas as demandas de entrega devem ser satisfeitas:
+% demandas de entrega devem ser satisfeitas em cada consumidor
+\begin{equation}
+\label{eq:modelagem_6}
+\sum^{n}_{i=0}z_{ij} - \sum^{n}_{i=0}z_{ji} = d_{j}, \qquad \forall j \neq 0
+\end{equation}
+
+\item uma vez que a variável $l_j$ assumir valor 1, a demanda de coleta do consumidor $v_j$ deve ser satisfeita:
+% demandas de coleta devem ser satisfeitas em cada consumidor
+\begin{equation}
+\label{eq:modelagem_61}
+\sum^{n}_{i=0}y_{ji} - \sum^{n}_{i=0}y_{ij} = p_j \ell_j, \qquad \forall j \neq 0
+\end{equation}
+
+\item os veículos possuem uma capacidade limite para o transporte de cargas. Esse transporte deve ocorrer através das arestas incluídas na solução:
+% demandas devem ser transportadas nos arcos incluidos na solução
+% e ainda impõe um limite para a carga total transportada por veículo
+\begin{equation}
+\label{eq:modelagem_7}
+y_{ij} + z_{ij} \leq Q \sum^{k_{max}}_{k=1}x^{k}_{ij}, \qquad i, j = 0,\ldots,n
+\end{equation}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{MOVRPOP - Modelagem Matemática}
+ \begin{itemize}
+ \item restrição de integralidade das variáveis de decisão:
+% restrição de integralidade
+\begin{equation}
+\label{eq:modelagem_8}
+x_{ij}, \ell_j \in \{0, 1\}, \qquad i, j = 0,\ldots,n
+\end{equation}
+
+\item restrição de não-negatividade para fluxo de demandas de coleta:
+% restrição de não negatividade
+\begin{equation}
+\label{eq:modelagem_9}
+y_{ij} \geq 0, \qquad i, j = 0,\ldots,n
+\end{equation}
+
+\item restrição de não-negatividade para fluxo de demandas de entrega:
+% restrição de não negatividade
+\begin{equation}
+\label{eq:modelagem_10}
+z_{ij} \geq 0, \qquad i, j = 0,\ldots,n
+\end{equation}
+  \end{itemize}
+
+\end{frame}
+
+\section{Busca Local Multibojetivo Baseada em Indicador}
+\begin{frame}
+ \frametitle{Características do IBMOLS}
+ \begin{itemize}
+  \item Nem sempre há uma \textbf{clara definição do que seja uma boa aproximação} da Fronteira de Pareto    
+  \item A qualidade da solução dependerá do contexto do problema e das \textbf{preferências do tomador de decisão} 
+  \item Embora os algoritmos evolucionários sejam os mais utilizados, é reconhecida a eficiência dos \textbf{métodos 
+  baseados em busca local}, principalmente em problemas de \textbf{otimização combinatória de larga escala}
+  
+ \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{Características do IBMOLS}
+ \begin{itemize}
+  \item Isto posto, o presente trabalho utiliza para resolução do MOVRPOP a busca local multiobjetivo baseada em indicador (IBMOLS, do inglês \emph{Indicator-based 
+  multiobjetive local search}).    
+  \item No IBMOLS é utilizado um indicador binário (${I}$) que expressa a preferência do tomador de decisão e \textbf{atribui a cada solução um valor} real que reflete 
+  a sua qualidade
+  \item A seguir é apresentado a versão adotada do algoritmo do IBMOLS, proposta por (Assis, 2013)
+  
+ \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+%  \frametitle{Algoritmo IBMOLS}
+%\begin{algorithm}
+\tiny{
+ \begin{algorithmic}[1]
+  \REQUIRE N (Tamanho da População), I(Indicador Binário) %1
+  \STATE $PO \leftarrow \emptyset$; %2
+  \REPEAT %3
+  		\STATE $P \leftarrow $ População Inicial($N$);  %4
+  		\STATE $Aptidao[~] \leftarrow $Calcular Aptidão($P$,$I$) %5
+  		\STATE $s_{w} \leftarrow$ Menor($Aptidao$); %6
+  		\FORALL{solução $s \in P$} %7
+  				\STATE continue $\leftarrow$ TRUE; %8
+				\WHILE {continue}  				%9
+  				\STATE $s' \leftarrow$ Perturbação($s$);  %10
+  				\STATE $s'' \leftarrow$ Busca Local($s'$); %11
+   				\IF { $s= s''$} %12
+   					\STATE $s'' \leftarrow s'$;  continue $\leftarrow$ FALSE; %13
+   				\ENDIF %14
+   				\IF{$Aptidao(s'') > Aptidao(s_{w})$} 
+   					\STATE $P \leftarrow P \cup \{s''\} - \{s_{w}\}$;
+   					\STATE Calcular Aptidão($s''$, $s_{w}$, $P$, $I$);
+   					\STATE $s_{w} \leftarrow$ Menor($Aptidao$); 
+   				\ELSE 
+   					\STATE continue $\leftarrow$ FALSE;
+   				\ENDIF
+   				\ENDWHILE
+  		\ENDFOR
+  		 \STATE $PO \leftarrow$ Soluções Não Dominadas$(PO \cup P)$;
+  \UNTIL {Critério de Parada}
+  \STATE \textbf{retornar} $PO$;
+ \end{algorithmic} }
+%   \caption{Algoritmo IBMOLS modificado}
+% \label{alg:ibmolsassis}
+%\end{algorithm}  
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Indicadores Binários}
+ \begin{itemize}
+  \item A qualidade das soluções no $I_{\epsilon}$ é mensurada pela a distância entre duas soluções no espaço dos objetivos. Seu cálculo é efetuado da seguinte maneira: 
+ \begin{equation}
+ \label{eq:indicadorepsilon}
+ I_{\epsilon} = max_{i \in \{1,...,n\}}(f_i(x_1)-f_i(x_2))
+ \end{equation}
+  \item O cálculo de aptidão de um indivíduo é determinado pelo somatório (Basseur, 2007):
+  \begin{equation}
+\label{eq:indicador3}
+I(P\setminus\{x\},x) = \sum_{z \in P \setminus \{x\}} -e^{-I_{\epsilon}(z,x)/k}
+\end{equation}
+ \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{Indicadores Binários}
+ \begin{itemize}
+  \item Dadas duas soluções $x_1$ e $x_2$, o indicador binário de hipervolume $I_{HD}(x_1,x_2)$, representa o volume do espaço de objetivos que é dominado por $x_1$ mas 
+  não é dominado por $x_2$: 
+ \begin{equation}
+ \label{eq:indicadorhd}
+ I_{HD} = \begin{cases}
+          $H${(x_1)}$ - H$(x_2)$$ \qquad \textrm{ se $x_1$ $\prec$ $x_2$},\\
+          $H$(x_1+x_2)$ - H$(x_2)$$ \qquad \textrm{ caso contrário.}
+             \end{cases}
+\end{equation}
+  \item O cálculo de aptidão de um indivíduo é determinado pelo somatório:
+  \begin{equation}
+\label{eq:indicador3}
+I(P\setminus\{x\},x) = \sum_{z \in P \setminus \{x\}} -e^{-I_{HD}(z,x)/k}
+\end{equation}
+ \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+ \frametitle{Indicadores Binários}
+ \begin{itemize}
+  \item O indicador $I_{FON}$ basicamente propõe um ranqueamento entre as soluções, a partir do número de soluções que cada uma domina: 
+\begin{equation}
+ \label{eq:indicadorfon}
+ I_{Fon}(x_1,x_2) =  \begin{cases}
+          -1 \qquad \textrm{ se $x_1$ $\prec$ $x_2$},\\
+          0 \qquad \textrm{ caso contrário.}
+             \end{cases}
+\end{equation}
+  \item Direfentemente dos outros indicadores, o cálculo de aptidão dos indivíduos da população é realizado através do simples somatório dos valores de fitness de cada 
+  indivíduo (Fonseca et al. (1993)):
+  \begin{equation}
+\label{eq:indicador1}
+I(P\setminus\{x\},x) = \sum_{z \in P \setminus \{x\}} I_{FON}(z,x)
+\end{equation}
+
+ \end{itemize}
+  
+\end{frame}
+
+% Amanhã: métricas utilizadas, parâmetros empregados, tabelas coloridas, conclusão
+\section{Testes Computacionais}
+
+\begin{frame}
+  \frametitle{Instâncias de Problemas e Parâmetros utilizados}
+    
+    \begin{itemize}
+    \item Foram utilizadas 12 instâncias de 50 a 150 consumidores mais o depósito, propostas por Salhi e Nagy (1999) para o VRPSPD.
+    \item Cada instância foi executada 5 vezes com cada indicador
+    \item O número de gerações do IBMOLS foi 50, tamanho da população inicial 10, taxa de mutação dos mecanismos de perturbação 0.3 e o fator de escala $k$ (no caso dos 
+    indicadores $I_{\epsilon}$ e $I_{HD}$) 0.1. 
+    \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Métricas utilizadas para avaliação}
+    Foram utilizadas as seguintes métricas na avaliação do desempenho dos algoritmos:
+    \begin{itemize}
+    \item Tempo de execução
+    \item Cardinalidade, que mensura quantas possibilidades de escolha o tomador de decisão pode ter
+    \item Hipervolume: a qualidade de uma fronteira é definida pela soma dos hipercubos de cada uma das soluções que a compõem 
+    \item Cobertura: determina em que medida uma fronteira de Pareto domina as demais
+    \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resultados de Tempo de Execução}
+    \footnotesize{
+    \begin{tabular}{c|ccc}
+\hline
+Instância & \textcolor{red}{$I_{\epsilon}$}             & \textcolor{green}{$I_{FON}$}             & \textcolor{blue}{ $I_{HD}$}      \\
+\hline
+\textcolor{red}{CMT1X}     & 4783,25 (241,31)    & 5221,07 (448,8)     & 5140,48 (202,24)    \\
+\textcolor{green}{CMT1Y}     & 7700,22 (234,36)    & 7246,09 (964,65)    & 7366,17 (477,8)     \\
+\textcolor{red}{CMT2X}     & 11696,6 (1009,23)   & 11868,65 (1620,46)  & 11772,4 (649,95)    \\
+\textcolor{red}{CMT2Y}     & 27499,58 (2073,65)  & 32398,84 (1607,76)  & 32438,68 (4541,82)  \\
+\textcolor{red}{CMT3X}     & 152092,6 (6979,93)  & 162727,6 (11602,19) & 160291,6 (7381,23)  \\
+\textcolor{red}{CMT3Y}     & 203925,6 (7675,61)  & 207824,2 (10057,66) & 207873,4 (4173,17)  \\
+\textcolor{red}{CMT4X}     & 574257,6 (18919,79) & 588513,2 (16569,53) & 574362,2 (37086,5)  \\
+\textcolor{red}{CMT4Y}     & 784814,4 (45346,66) & 801915,6 (16155,43) & 790977 (57675,27)   \\	
+\textcolor{red}{CMT11X}    & 497025,4 (38917,17) & 506154,8 (44709,15) & 507026 (52041,12)   \\
+\textcolor{red}{CMT11Y}    & 327682,2 (34860,79) & 345287,6 (19075,34) & 342428,4 (18764,02) \\
+\textcolor{red}{CMT12X}    & 100029,28 (4513,96) & 105918,5 (5543,89)  & 105928,4 (4785,45)  \\
+\textcolor{blue}{CMT12Y}    & 129340,2 (6356,13)  & 138568,2 (5581,87)  & 128980,2 (5395,27)   \\
+\hline
+\textcolor{red}{Média}& 235070,58 (13927,38)& 242803,70 (11161,39)& 239548,74 (16097,82)\\
+\hline
+\end{tabular}
+  }
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Resultados de Cardinalidade}
+    \footnotesize{
+    \begin{tabular}{c|ccc}
+\hline
+Instância & \textcolor{red}{$I_{\epsilon}$}             & \textcolor{green}{$I_{FON}$}             & \textcolor{blue}{ $I_{HD}$}      \\
+\hline
+\textcolor{blue}{ CMT1X}     & 2,6 (0,49)  & 2,8 (0,4)   & 3,6 (0,8)   \\
+\textcolor{green}{CMT1Y}     & 7,4 (1,02)  & 11,4 (1,02) & 11,2 (1,17) \\
+\textcolor{red}{CMT2X}     & 5 (1,41)    & 4,4 (1,62)  & 3,2 (0,75)  \\
+\textcolor{green}{CMT2Y}     & 22,4 (3,01) & 29,8 (3,06) & 27,8 (5,08) \\
+\textcolor{blue}{ CMT3X}     & 5,2 (1,47)  & 6,2 (2,14)  & 7 (1,1)     \\
+\textcolor{green}{CMT3Y}     & 17,2 (1,6)  & 19,8 (3,12) & 18 (3,03)   \\
+\textcolor{green}{CMT4X}     & 7 (1,26)    & 7,2 (1,94)  & 6,4 (1,5)   \\
+\textcolor{red}{CMT4Y}     & 30,8 (3,06) & 29 (3,1)    & 30,2 (2,93) \\
+\textcolor{red}{CMT11X}    & 37,4 (7,66) & 35,6 (6,89) & 37 (8,37)   \\
+\textcolor{blue}{CMT11Y}    & 20,8 (1,6)  & 24,6 (4,08) & 24,8 (2,93) \\
+\textcolor{green}{CMT12X}    & 14,6 (2,73) & 16 (3,58)   & 14,8 (2,99) \\
+\textcolor{red}{CMT12Y}    & 27,2 (4,45) & 24,8 (4,02) & 24,2 (3,87) \\
+\hline
+\textcolor{green}{Média}& 16,47 (2,48)& 17,63 (2,91)& 17,35 (2,88)\\
+\hline
+\end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resultados de Hipervolume}
+    \footnotesize{
+    \begin{tabular}{c|ccc}
+\hline
+Instância & \textcolor{red}{$I_{\epsilon}$}             & \textcolor{green}{$I_{FON}$}             & \textcolor{blue}{ $I_{HD}$}      \\
+\hline
+\textcolor{blue}{CMT1X}     & 391,61 (16,62)     & 405,05 (17,78)     & 413,48 (3,61)      \\
+\textcolor{green}{CMT1Y}     & 2833,78 (244)      & 3119,52 (80,61)    & 3016,16 (107,51)   \\
+\textcolor{red}{CMT2X}     & 2166,34 (247,25)   & 1886,7 (351,62)    & 1956,23 (266,36)   \\
+\textcolor{red}{CMT2Y}     & 54779,43 (745,53)  & 54355,08 (837,48)  & 54242,71 (1371,66) \\
+\textcolor{green}{CMT3X}     & 970,92 (155,08)    & 1123,73 (26,12)    & 1116,95 (5,63)     \\
+\textcolor{green}{CMT3Y}     & 9247,71 (93,23)    & 9348,28 (40,43)    & 9106,29 (219,12)   \\
+\textcolor{green}{CMT4X}     & 1890,53 (285,22)   & 2296,68 (634,4)    & 1820,75 (348,09)   \\
+\textcolor{red}{CMT4Y}     & 38618,37 (866,12)  & 38369,73 (1103,39) & 38393,53 (1582,99) \\
+\textcolor{red}{CMT11X}    & 36891,88 (1131,33) & 36843,05 (614,28)  & 36393,13 (912,33)  \\
+\textcolor{red}{CMT11Y}    & 19246,31 (1584,18) & 18610,46 (1585,78) & 18651,36 (1355,23) \\
+\textcolor{green}{CMT12X }   & 10735 (70,94)      & 10736,53 (98,45)   & 10616,73 (222,36)  \\
+\textcolor{green}{CMT12Y}    & 20577,81 (1193,77) & 20770,49 (535,56)  & 20574,07 (871,64)  \\
+\hline
+\textcolor{red}{Média} & 16529,14 (552,77)  & 16488,78 (493,83)  & 16358,45 (605,54)  \\
+\hline
+\end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resultados de Cobertura}
+    \footnotesize{
+    \begin{tabular}{c|ccc}
+\hline
+Instância & \textcolor{red}{$I_{\epsilon}$}             & \textcolor{green}{$I_{FON}$}             & \textcolor{blue}{ $I_{HD}$}      \\
+\hline
+\textcolor{green}{CMT 1X}  & 0,68 (0,19) & 0,74 (0,25) & 0,73 (0,22) \\
+\textcolor{blue}{CMT 1Y}  & 0,32 (0,09) & 0,50 (0,08) & 0,51 (0,18) \\
+\textcolor{blue}{CMT 2X}  & 0,46 (0,45) & 0,36 (0,34) & 0,46 (0,20) \\
+CMT 2Y  & 0,50 (0,16) & 0,34 (0,15) & 0,50 (0,09) \\
+\textcolor{blue}{CMT 3X}  & 0,30 (0,19) & 0,48 (0,12) & 0,62 (0,12) \\
+\textcolor{green}{CMT 3Y}  & 0,36 (0,08) & 0,52 (0,17) & 0,37 (0,13) \\
+\textcolor{green}{CMT 4X}  & 0,32 (0,14) & 0,64 (0,26) & 0,37 (0,23) \\
+\textcolor{blue}{CMT 4Y}  & 0,42 (0,16) & 0,36 (0,10) & 0,48 (0,11) \\
+\textcolor{red}{CMT 11X} & 0,50 (0,17) & 0,45 (0,12) & 0,44 (0,27) \\
+\textcolor{blue}{CMT 11Y} & 0,40 (0,21) & 0,37 (0,12) & 0,40 (0,13) \\
+\textcolor{blue}{CMT 12X} & 0,45 (0,15) & 0,40 (0,03) & 0,51 (0,17) \\
+\textcolor{blue}{CMT 12Y}& 0,37 (0,11) & 0,31 (0,08) & 0,48 (0,10) \\
+\hline
+\textcolor{blue}{Média} & 0,42 (0,18) & 0,46 (0,15) & 0,49 (0,16)\\
+\hline
+\end{tabular}
+  }
+\end{frame}
+
+\section{Conclusão}
+
+\begin{frame}
+  \frametitle{Conclusão}
+    
+    \begin{itemize}
+    \item Os custos de transporte representam lugar de destque nas preocupações das organizações. Qualquer percentual de economia pode representar um grande avanço
+    \item A revisão bibliográfica mostrou que há poucos trabalhos de VRP que tratam de demandas de coleta e entrega numa abordagem multiobjetivo.
+    \item Por ser um problema de complexidade $\mathcal{NP}$-difícil, busca-se o emprego de técnicas heurísticas para obtenção de soluções viáveis em um tempo 
+    computacional aceitável
+    \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusão}
+    
+    \begin{itemize}
+    \item A técnica empregada para a resolução do MOVRPOP foi a busca local local baseada em indicador (IBMOLS), que possui um indicador através do qual o tomador de 
+    decisão pode explicitar suas preferências de otimização
+    \item O IBMOLS foi testado com três diferentes tipos de indicadores encontrados na literatura $I_{\epsilon}$, $I_{HD}$ e o $I_{FON}$
+    \item Os resultados obtidos demonstram um desempenho muito próximo entre os indicadores, sendo necessário um maior número de testes para se verificar se as diferenças
+    entre eles são significativas do ponto de vista estatístico
+    \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Trabalhos Futuros}
+    
+    \begin{itemize}
+    \item executar um maior número de testes para uma análise estatística melhor das diferenças entre os algoritmos;
+    \item testar o IBMOLS em outros conjuntos de instâncias da literatura bem como em outros problemas de otimização;
+    \item comparar o desempenho do IBMOLS em relação a outras meta-heurísticas;
+    \item implementar e testar os indicadores em algoritmos evolucionários, haja vista que várias meta-heurísticas dessa classe têm sido muito utilizadas e têm 
+    apresentado bons resultados em termos de qualidade de solução em tempo computacional razoável;
+    \item testar o IBMOLS com outros indicadores encontrados na literatura e, a partir da comparação entre os mesmos através da observação e experiência adquiridas, propor um
+    novo indicador;
+    \item aplicar a técnica proposta em um problema real.
+    \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{What's up?}
+  \begin{definition}
+    A \alert{prime number} is a number that has exactly two divisors
+  \end{definition}
+  \begin{example}
+    \begin{itemize}
+    \item hey 2 (two divisors: 1 and 2).
+    \item hey 3 3 is prime (two divisors: 1 and 3).
+    \item 4 is not prime (\alert{three} divisors: 1, 2, and 4).
+    \end{itemize}
+  \end{example}
+\end{frame}
+
+% --------------------------------------------------- Slide --
+%\section{Adding Notes}
+% ------------------------------------------------------------
+\begin{frame}
+  \begin{itemize}
+  \item<1-> Eggs
+  \item<2-> Plants
+    \note[item]<2>{Tell joke about plants.}
+    \note[item]<2>{Make it short.}
+  \item<3-> Animals
+  \end{itemize}
+\end{frame}
+
+\section*{Referências}
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+\end{document}

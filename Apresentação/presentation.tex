@@ -1,0 +1,244 @@
+\documentclass[xcolor=table]{beamer}
+% \usepackage[utf8]{inputenc}
+\usepackage{default}
+\mode<presentation>{
+    %\usepackage{beamerthemeshadow}
+    %\usepackage{beamerthemeshadow}
+    %\usepackage{beamerthemePaloAlto}
+    %\usepackage{beamerthemeSzeged}
+    %\usepackage{beamerthemeAntibes}
+    %\usepackage{beamerthemeBergen}
+    %\usepackage{beamerthemeBerkeley}
+    %\usepackage{beamerthemeBerlin}
+    %\usepackage{beamerthemeBoadilla}  
+    %\usepackage{beamerthemeboxes}  
+    %\usepackage{beamerthemeCambridgeUS}
+    %\usepackage{beamerthemeCopenhagen} 
+    %\usepackage{beamerthemeDarmstadt}
+    %\usepackage{beamerthemeDresden}
+    %\usepackage{beamerthemeFrankfurt}
+    %\usepackage{beamerthemeGoettingen}
+    %\usepackage{beamerthemeHannover}
+    \usepackage{beamerthemeIlmenau}
+    %\usepackage{beamerthemeJuanLesPins} 
+    %\usepackage{beamerthemeLuebeck} 
+    \usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+    \usepackage{clrscode3e}
+    
+%     \usepackage[table,xcdraw]{xcolor}
+
+    \beamertemplatetransparentcovereddynamic
+    \beamertemplateballitem
+    %\beamertemplatefootpagenumber
+}
+\mode<handout>{
+    \usepackage[bar]{beamerthemetree}
+    % Colocando um fundo cinza quando for gerar transparências para serem impressas
+    % mais de uma transparência por página
+    \beamertemplatesolidbackgroundcolor{black!5}
+}
+% \usepackage[ruled,chapter]{algorithm}
+\usepackage{algorithm}	
+\usepackage{algorithmic}
+
+\usepackage{comment}
+\usepackage{amsmath,amssymb}
+\usepackage[brazil]{varioref}
+\usepackage[english,brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[alf]{abntex2cite}
+\usepackage{abntex2abrev}
+% \usepackage[round,sort,authoryear,nonamebreak]{natbib}
+% \usepackage[authoryear]{natbib}
+%\usepackage{minitoc-hyperref}
+%\usepackage{listings}
+%\usepackage{listings}
+%\usepackage{colortbl}
+%\usepackage{pslatex}
+\beamertemplatetransparentcovereddynamic
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{block}=[draw opacity=0.7,line width=1.4cm]
+
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+  \oldmacro\hfill%
+  \insertframenumber\,/\,\inserttotalframenumber}
+
+\title[Trabalho de Conclusão de Curso]{Trabalho de Conclusão de Curso}
+\subtitle{Título do trabalho}
+
+%\titlegraphic{}
+
+\author[Nome do Autor]{Nome do Autor}
+  \institute[UFVJM]{Universidade Federal dos Vales do Jequitinhonha e Mucuri \newline
+  Bacharelado em Sistemas de Informação \newline
+%   \inst{Departamento de Computação
+	  
+     Orientador: Prof. Fulano\\
+     Coorientador: Cicrano\\
+     $~$\\
+%      Disciplina: Nome da Disciplina\\
+}
+\logo{\includegraphics[scale=0.1]{logo-ufvjm.jpg}}
+% Se comentar a linha abaixo, irá aparecer a data quando foi compilada a apresentação
+%\date{\textcolor{red}{III Encontro Mineiro de Equações Diferenciais, 2009}}
+%\pgfdeclareimage[height=0.4cm]{das}{figs/logodas}
+%\pgfdeclareimage[height=1cm]{logo}{logos}
+% pode-se colocar o LOGO assim
+%\logo{\pgfuseimage{logo}}
+% ou...
+%\logo{\vbox{\hbox to 3cm{\hfil\pgfuseimage{logo}}}}
+
+\begin{document}
+%\xdefinecolor{MyGreen}{rgb}{0,0.6,0}
+%\beamerboxesdeclarecolorscheme{MyGreen}{MyGreen}{MyGreen!20!averagebackgroundcolor}
+\beamerboxesdeclarecolorscheme{formula}{white}{blue!250!averagebackgroundcolor}
+\frame{\titlepage}
+
+%\frame{\titlepage}
+\part{Presentation}
+% \section{Sumário}
+
+\frame{
+\frametitle{Sumário}
+\tableofcontents
+}
+
+\AtBeginSection[]{
+  \frame<handout:0>{
+    %\frametitle{Sumário}
+    \tableofcontents[current,currentsection]
+  }
+}
+
+%===================================Slide=================================================
+
+\section{Introdução}
+
+
+%Inserindo a justificativa 
+\begin{frame}
+    \frametitle{Motivação}
+    
+    \textbf{Problemas encontrados:}
+    \begin{itemize}
+        \item Nenhuma
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    %Insira os objetivos
+    \frametitle{Objetivos}
+    \textbf{Objetivo geral:} Acabar com o projeto antes que ele acabe comigo.
+    
+    \textbf{Objetivos específicos:}
+    \begin{itemize}
+        \item Criar; e
+        \item Apresentar.
+    \end{itemize}
+\end{frame}
+
+
+\section{Desenvolvimento}
+
+\begin{frame}
+    %Inserindo tabelas
+    \frametitle{Inserção de tabelas}
+    
+    % Please add the following required packages to your document preamble:
+    % \usepackage[table,xcdraw]{xcolor}
+    % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+    \begin{table}[h]
+    \centering
+    \caption{Título da tabela. Fonte: Autor.}
+    \resizebox{8cm}{!}{ %coloca toda a tabela dentro do slide
+        \begin{tabular}{l|c|c}
+        \multicolumn{1}{c|}{\textbf{Coluna 1}}  & \textit{\textbf{Coluna 2}} & \textit{\textbf{Coluna 3}} \\
+        \hline 
+        Linha 1      & 83,33\%                 & 68,14\%                     \\
+        LInha 2   & 51,85\%                 & 66,67\%                     \\
+        
+        \hline 
+        \end{tabular}
+    }
+    \label{comaparacao-cms}
+    \end{table}
+\end{frame}
+
+
+\section{Resultados}
+\begin{frame}
+    %Inserindo imagens
+    \frametitle{Apresentação das Telas: Exemplo de inserção de imagem}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.4\textwidth]{figuras/tux.png}
+        \label{fig:login-portal}
+    \end{figure}
+\end{frame}
+
+
+\section{Discussão}
+\begin{frame}
+    %Insira a discussão dos resultados
+    \frametitle{Discussão}
+    \begin{itemize}
+        \item Cumprimento de todos os objetivos
+        
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    %Insira os trabalhos futuros
+    \frametitle{Dificuldades Encontradas}
+    \begin{itemize}
+     \item Nenhuma
+    \end{itemize}
+
+\end{frame}
+
+
+
+\section{Trabalhos futuros}
+\begin{frame}
+    %Insira os trabalhos futuros
+    \frametitle{Trabalhos futuros}
+    \begin{itemize}
+        \item Nenhum;
+
+        \end{itemize}
+
+    
+\end{frame}
+
+    
+
+\section{Referências Bibliográficas}
+
+\begin{frame}
+    %Insira as referências manualmente (Ordem alfabética)
+    \frametitle{Referências Bibliográficas}
+    \scriptsize{
+        Leite, G. R. Desenvolvimento de um sistema web para a Associação de Protetores da Bacia Hidrográfica do Rio Gorutuba ``Kuruatuba'', Diamantina, MG, Brasil, 2021. \newline
+        
+}
+\end{frame}
+
+\begin{frame}
+    %Insira as referências manualmente (Ordem alfabética)
+    \frametitle{Referências Bibliográficas}
+    \scriptsize{
+
+        Leite, R. R. Análise da Busca Local Multiobjetivo Baseada em Indicador na resolução do Problema de Roteamento de Veículos com serviços de entrega obrigatória e coleta, Diamantina, MG, Brasil, 2016. \newline
+    }
+\end{frame}
+
+
+\end{document}
