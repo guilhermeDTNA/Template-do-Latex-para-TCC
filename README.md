@@ -1,4 +1,6 @@
-# Template-do-Latex-para-TCC
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
+
+# Template do Latex para TCC
 Template do Latex para Trabalho de Conclusão de Curso na UFVJM, respeitando as normas da biblioteca referentes ao mesmo.
 
 # Algumas instruções de uso
